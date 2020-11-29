@@ -76,6 +76,7 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
             //insert data
             dbMahasiswa.child(id).setValue(mahasiswa);
 
+            //test add
             finish();
         }
     }
