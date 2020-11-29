@@ -57,7 +57,7 @@ public class MahasiswaAdapter extends BaseAdapter {
     private class ViewHolder {
         private TextView txtName, txtMail;
 
-        ViewHolder(View view) {
+        public ViewHolder(View view) {
             txtName = view.findViewById(R.id.txtName);
             txtMail = view.findViewById(R.id.txtMail);
         }

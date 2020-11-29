@@ -6,12 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.firebase_crud.adapter.MahasiswaAdapter;
 import com.example.firebase_crud.mahasiswa.CreateActivity;
+import com.example.firebase_crud.mahasiswa.UpdateActivity;
 import com.example.firebase_crud.model.Mahasiswa;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,6 +44,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnAdd.setOnClickListener(this);
 
         mahasiswaList = new ArrayList<>();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(MainActivity.this, UpdateActivity.class);
+                intent.putExtra(UpdateActivity.EXTRA_MAHASISWA, mahasiswaList.get(i));
+
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -66,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     mahasiswaList.add(mahasiswa);
                 }
 
-                adapter = new MahasiswaAdapter(MainActivity.this);
+                MahasiswaAdapter adapter = new MahasiswaAdapter(MainActivity.this);
                 adapter.setMahasiswaList(mahasiswaList);
                 listView.setAdapter(adapter);
             }
