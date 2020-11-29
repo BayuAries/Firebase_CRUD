@@ -166,7 +166,6 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
                 dialogInterface.cancel();
-                //
             }
         });
 
